@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>John Doe - Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    .animate-delay-1 {
+      animation-delay: 0.1s;
+      opacity: 0;
+    }
+
+    .animate-delay-2 {
+      animation-delay: 0.2s;
+      opacity: 0;
+    }
+
+    .animate-delay-3 {
+      animation-delay: 0.3s;
+      opacity: 0;
+    }
+
+    .animate-delay-4 {
+      animation-delay: 0.4s;
+      opacity: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .project-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .skill-badge {
+      transition: all 0.2s ease;
+    }
+
+    .skill-badge:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #3b82f6;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(to bottom, #e5e7eb, #3b82f6, #e5e7eb);
+    }
+
+    @media (max-width: 768px) {
+      .timeline-line {
+        left: 20px;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="#home" class="text-xl font-bold text-gray-900">JD</a>
+        <div class="hidden md:flex space-x-8">
+          <a href="#about" class="nav-link text-gray-700 hover:text-blue-600">About</a>
+          <a href="#projects" class="nav-link text-gray-700 hover:text-blue-600">Projects</a>
+          <a href="#skills" class="nav-link text-gray-700 hover:text-blue-600">Skills</a>
+          <a href="#experience" class="nav-link text-gray-700 hover:text-blue-600">Experience</a>
+          <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600">Contact</a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+      <div class="px-4 py-3 space-y-3">
+        <a href="#about" class="block text-gray-700 hover:text-blue-600">About</a>
+        <a href="#projects" class="block text-gray-700 hover:text-blue-600">Projects</a>
+        <a href="#skills" class="block text-gray-700 hover:text-blue-600">Skills</a>
+        <a href="#experience" class="block text-gray-700 hover:text-blue-600">Experience</a>
+        <a href="#contact" class="block text-gray-700 hover:text-blue-600">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="min-h-screen flex items-center justify-center pt-16 px-4 bg-gradient-to-br from-blue-50 to-gray-50">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="fade-in-up">
+        <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
+          Hi, I'm <span class="text-blue-600">John Doe</span>
+        </h1>
+      </div>
+      <div class="fade-in-up animate-delay-1">
+        <p class="text-xl md:text-2xl text-gray-600 mb-8">
+          Full Stack Developer & Creative Problem Solver
+        </p>
+      </div>
+      <div class="fade-in-up animate-delay-2">
+        <p class="text-lg text-gray-500 mb-12 max-w-2xl mx-auto">
+          Building elegant solutions to complex problems. Passionate about creating seamless user experiences and scalable applications.
+        </p>
+      </div>
+      <div class="fade-in-up animate-delay-3">
+        <a href="#contact" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+          Get In Touch
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 px-4 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center fade-in-section">About Me</h2>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="fade-in-section">
+          <img src="https://picsum.photos/400/500" alt="Profile" class="rounded-lg shadow-lg w-full">
+        </div>
+        <div class="fade-in-section">
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            I'm a passionate full stack developer with over 5 years of experience in building web applications. I love turning ideas into reality through clean, efficient code.
+          </p>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            When I'm not coding, you can find me exploring new technologies, contributing to open source projects, or enjoying a good cup of coffee while reading about the latest industry trends.
+          </p>
+          <p class="text-gray-600 mb-8 leading-relaxed">
+            I specialize in modern JavaScript frameworks, backend development, and creating intuitive user interfaces that people love to use.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
+            <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+            </a>
+            <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 px-4 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center fade-in-section">Projects</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Project 1 -->
+        <div class="project-card bg-white rounded-lg overflow-hidden shadow-md fade-in-section">
+          <img src="https://picsum.photos/400/250?random=1" alt="Project 1" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">E-Commerce Platform</h3>
+            <p class="text-gray-600 mb-4">A full-stack e-commerce solution with payment integration, inventory management, and admin dashboard.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">React</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">Node.js</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">MongoDB</span>
+            </div>
+            <div class="flex space-x-4">
+              <a href="#" class="text-blue-600 hover:text-blue-700 font-medium">Live Demo →</a>
+              <a href="#" class="text-gray-600 hover:text-gray-700 font-medium">Code →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card bg-white rounded-lg overflow-hidden shadow-md fade-in-section">
+          <img src="https://picsum.photos/400/250?random=2" alt="Project 2" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Task Management App</h3>
+            <p class="text-gray-600 mb-4">Collaborative task management tool with real-time updates, team features, and analytics.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">Vue.js</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">Firebase</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">Tailwind</span>
+            </div>
+            <div class="flex space-x-4">
+              <a href="#" class="text-blue-600 hover:text-blue-700 font-medium">Live Demo →</a>
+              <a href="#" class="text-gray-600 hover:text-gray-700 font-medium">Code →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card bg-white rounded-lg overflow-hidden shadow-md fade-in-section">
+          <img src="https://picsum.photos/400/250?random=3" alt="Project 3" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Weather Dashboard</h3>
+            <p class="text-gray-600 mb-4">Beautiful weather application with forecasts, maps, and location-based recommendations.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">JavaScript</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">API</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">CSS3</span>
+            </div>
+            <div class="flex space-x-4">
+              <a href="#" class="text-blue-600 hover:text-blue-700 font-medium">Live Demo →</a>
+              <a href="#" class="text-gray-600 hover:text-gray-700 font-medium">Code →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card bg-white rounded-lg overflow-hidden shadow-md fade-in-section">
+          <img src="https://picsum.photos/400/250?random=4" alt="Project 4" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Social Media Analytics</h3>
+            <p class="text-gray-600 mb-4">Analytics dashboard for tracking social media metrics across multiple platforms.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">React</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">D3.js</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">Express</span>
+            </div>
+            <div class="flex space-x-4">
+              <a href="#" class="text-blue-600 hover:text-blue-700 font-medium">Live Demo →</a>
+              <a href="#" class="text-gray-600 hover:text-gray-700 font-medium">Code →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card bg-white rounded-lg overflow-hidden shadow-md fade-in-section">
+          <img src="https://picsum.photos/400/250?random=5" alt="Project 5" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Blog Platform</h3>
+            <p class="text-gray-600 mb-4">Modern blogging platform with markdown support, SEO optimization, and content management.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">Next.js</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">PostgreSQL</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">Prisma</span>
+            </div>
+            <div class="flex space-x-4">
+              <a href="#" class="text-blue-600 hover:text-blue-700 font-medium">Live Demo →</a>
+              <a href="#" class="text-gray-600 hover:text-gray-700 font-medium">Code →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card bg-white rounded-lg overflow-hidden shadow-md fade-in-section">
+          <img src="https://picsum.photos/400/250?random=6" alt="Project 6" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Fitness Tracker</h3>
+            <p class="text-gray-600 mb-4">Mobile-responsive fitness tracking app with workout plans, progress charts, and goals.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">React Native</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">Redux</span>
+              <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">Chart.js</span>
+            </div>
+            <div class="flex space-x-4">
+              <a href="#" class="text-blue-600 hover:text-blue-700 font-medium">Live Demo →</a>
+              <a href="#" class="text-gray-600 hover:text-gray-700 font-medium">Code →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center fade-in-section">Skills</h2>
+      
+      <div class="grid md:grid-cols-3 gap-12">
+        <!-- Frontend -->
+        <div class="fade-in-section">
+          <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+            <svg class="w-6 h-6 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+            </svg>
+            Frontend
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">React</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">Vue.js</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">TypeScript</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">JavaScript</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">HTML5</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">CSS3</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">Tailwind CSS</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">Next.js</span>
+          </div>
+        </div>
+
+        <!-- Backend -->
+        <div class="fade-in-section">
+          <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+            <svg class="w-6 h-6 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
+            </svg>
+            Backend
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">Node.js</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">Express</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">Python</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">Django</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">REST APIs</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">GraphQL</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">PostgreSQL</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">MongoDB</span>
+          </div>
+        </div>
+
+        <!-- Tools & Others -->
+        <div class="fade-in-section">
+          <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+            <svg class="w-6 h-6 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+            </svg>
+            Tools & Others
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">Git</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">Docker</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">AWS</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">CI/CD</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">Jest</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">Webpack</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">Figma</span>
+            <span class="skill-badge px-4 py-2 bg-blue-50 text-blue-700 rounded-lg">Agile</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="py-20 px-4 bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold text-gray-900 mb-16 text-center fade-in-section">Work Experience</h2>
+      
+      <div class="relative">
+        <div class="timeline-line"></div>
+        
+        <!-- Experience 1 -->
+        <div class="mb-12 relative fade-in-section">
+          <div class="md:grid md:grid-cols-2 md:gap-8 items-center">
+            <div class="md:text-right mb-4 md:mb-0">
+              <span class="text-blue-600 font-semibold">2021 - Present</span>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md ml-12 md:ml-0">
+              <div class="absolute left-[13px] md:left-1/2 top-2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white transform md:-translate-x-1/2"></div>
+              <h3 class="text-xl font-bold text-gray-900 mb-1">Senior Full Stack Developer</h3>
+              <p class="text-blue-600 mb-3">Tech Solutions Inc.</p>
+              <p class="text-gray-600 leading-relaxed">Leading development of enterprise web applications. Mentoring junior developers and architecting scalable solutions for clients across various industries.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience 2 -->
+        <div class="mb-12 relative fade-in-section">
+          <div class="md:grid md:grid-cols-2 md:gap-8 items-center">
+            <div class="md:text-right mb-4 md:mb-0 md:order-1">
+              <span class="text-blue-600 font-semibold">2019 - 2021</span>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md ml-12 md:ml-0 md:order-2">
+              <div class="absolute left-[13px] md:left-1/2 top-2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white transform md:-translate-x-1/2"></div>
+              <h3 class="text-xl font-bold text-gray-900 mb-1">Full Stack Developer</h3>
+              <p class="text-blue-600 mb-3">Digital Innovations Ltd.</p>
+              <p class="text-gray-600 leading-relaxed">Developed and maintained multiple client projects. Implemented RESTful APIs, responsive front-ends, and optimized database performance.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience 3 -->
+        <div class="mb-12 relative fade-in-section">
+          <div class="md:grid md:grid-cols-2 md:gap-8 items-center">
+            <div class="md:text-right mb-4 md:mb-0">
+              <span class="text-blue-600 font-semibold">2018 - 2019</span>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md ml-12 md:ml-0">
+              <div class="absolute left-[13px] md:left-1/2 top-2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white transform md:-translate-x-1/2"></div>
+              <h3 class="text-xl font-bold text-gray-900 mb-1">Junior Developer</h3>
+              <p class="text-blue-600 mb-3">StartUp Studio</p>
+              <p class="text-gray-600 leading-relaxed">Started my professional journey building web applications with modern frameworks. Collaborated with designers and senior developers to deliver quality products.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience 4 -->
+        <div class="relative fade-in-section">
+          <div class="md:grid md:grid-cols-2 md:gap-8 items-center">
+            <div class="md:text-right mb-4 md:mb-0 md:order-1">
+              <span class="text-blue-600 font-semibold">2017 - 2018</span>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md ml-12 md:ml-0 md:order-2">
+              <div class="absolute left-[13px] md:left-1/2 top-2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white transform md:-translate-x-1/2"></div>
+              <h3 class="text-xl font-bold text-gray-900 mb-1">Web Development Intern</h3>
+              <p class="text-blue-600 mb-3">Creative Agency Co.</p>
+              <p class="text-gray-600 leading-relaxed">Learned industry best practices while contributing to real-world projects. Gained hands-on experience with HTML, CSS, JavaScript, and version control.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 px-4 bg-white">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4 text-center fade-in-section">Get In Touch</h2>
+      <p class="text-gray-600 text-center mb-12 fade-in-section">Have a project in mind? Let's work together!</p>
+      
+      <form id="contact-form" class="space-y-6 fade-in-section">
+        <div>
+          <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+          <input type="text" id="name" name="name" required 
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
+        </div>
+        
+        <div>
+          <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+          <input type="email" id="email" name="email" required 
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
+        </div>
+        
+        <div>
+          <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+          <input type="text" id="subject" name="subject" required 
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all">
+        </div>
+        
+        <div>
+          <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+          <textarea id="message" name="message" rows="5" required 
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none"></textarea>
+        </div>
+        
+        <button type="submit" 
+          class="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+          Send Message
+        </button>
+      </form>
+      
+      <div id="form-message" class="mt-6 text-center hidden"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-8 px-4">
+    <div class="max-w-6xl mx-auto text-center">
+      <p>&copy; 2024 John Doe. All rights reserved.</p>
+      <div class="flex justify-center space-x-6 mt-4">
+        <a href="#" class="hover:text-white transition-colors">GitHub</a>
+        <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
+        <a href="#" class="hover:text-white transition-colors">Twitter</a>
+        <a href="#" class="hover:text-white transition-colors">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
